@@ -1,0 +1,150 @@
+.tableHeader
+{
+    background-color:#EEE3D3!important;
+    color:#694B2F;
+    font-weight:400;
+}
+
+.el-header
+{
+    background-color:#EEE3D3!important;
+    display: flex;
+    align-items: center;
+}
+
+.el-main
+{
+border-color:#d9e5f2 !important;
+border-style:solid;
+border-width: 1px;
+}
+
+.el-header.small ,.el-main.small,.el-table.small,.buttonBar.small
+{
+width: 650px;
+}
+
+.el-header.middle ,.el-main.middle,.el-table.middle,.buttonBar.middle
+{
+width: 850px;
+}
+
+.el-form.readonly .el-form-item
+{
+  margin-bottom: 5px;
+}
+
+.buttonBar
+{
+      width: 100%;
+      margin:5px 0px;
+      text-align: right;
+}
+
+label {
+    color: #606266;
+  }
+  
+
+.disableClass,.yesClass{
+    color:red;
+}  
+.enableClass
+{
+  color: green;
+}
+
+.inProcessClass{
+  color:#2f5983;
+}  
+
+.el-form .el-form-item__label
+{
+  color:#2f5983;
+  /*width: 120px !important; */
+}
+/*
+.el-form:not(.login-form):not(.filter-form) .el-form-item__content
+{
+  margin-left: 120px !important;
+}
+*/
+
+@media screen and (max-width: 600px) {
+  .el-dialog
+  {
+    width: 95% !important;
+    margin-top:10px !important;
+  }
+  .el-header,
+  .el-main ,
+  .editTable
+  {
+    width: 100% !important;
+  }
+}
+
+.sortable-ghost {
+  opacity: 0.8;
+  color: #fff !important;
+  background: #42b983 !important;
+}
+
+.d_table {
+  display:table; 
+  border-collapse: separate;
+  border-spacing: 7px;
+}
+.d_tr {
+  display: table-row ;
+}
+.d_th {
+  display: table-cell;
+  text-align:right ;
+  padding-right:7px ;
+}
+.d_td {
+  display: table-cell;
+}
+
+.el-table__row.el-table__row td{
+  padding: 8px 0px ;
+}
+.summaryText{
+  font-size: 14px;
+  font-weight: normal;
+  color:#2f5983;
+  margin:10px 0 5px 0px;
+}
+.left.el-input-number .el-input__inner
+{
+  text-align: left;
+}
+.el-button-group .el-button--primary:only-child{ 
+  border-color: #b3d8ff;
+  border:0.5;
+  }
+  .box
+  {
+    padding: 10px; margin-top: 10px; border: 1px #ebeef5 solid
+  }
+.filter-container 
+{
+  .label{
+    font-size: 14px;
+    font-weight: normal;
+    color:#694B2F;
+    margin-right: 5px;
+  }
+  .label.sub{
+    margin-left: 5px;
+  }
+  .col_label{
+    font-size: 14px;
+    font-weight: normal;
+    color:#694B2F;
+    text-align: right;
+  }
+
+
+}

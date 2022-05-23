@@ -1,0 +1,10 @@
+{
+  "rd7Settings": {
+    "domain":"qa",
+    "isDemo": false,
+    "title": "影片-QA",
+    "loginImage": "",
+    "vendorUBAuthCheck": true,
+    "domainUBAuth": "sexqa"
+  }
+}

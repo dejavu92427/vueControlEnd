@@ -1,0 +1,95 @@
+---
+kind: pipeline
+type: kubernetes
+name: yaboLandingPipeline(QA)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: push2GCR-QA
+  image: plugins/gcr
+  settings:
+    build_args:
+    - website=qa
+    json_key:
+      from_secret: GOOGLE_CREDENTIALS
+    repo: gcr.io/rd7-project/video-ui-vue
+    tags:
+    - latest
+    - qa-${DRONE_COMMIT}
+    - ${DRONE_TAG}
+
+- name: deploy2GKE-QA
+  image: nytimes/drone-gke
+  settings:
+    cluster: yellow-video-test
+    project: rd7-project
+    vars:
+      deployName: video-vui-qa
+      env: qa
+      imageName: video-ui-vue
+      k8sNginxConfigMap: video-vui-nginx-qa
+      k8sNginxSSL: nginx-ssl-qa
+    zone: asia-east1-b
+  environment:
+    TOKEN:
+      from_secret: GOOGLE_CREDENTIALS
+
+trigger:
+  event:
+  - tag
+  ref:
+  - refs/tags/QA-*
+
+---
+kind: pipeline
+type: kubernetes
+name: yaboLandingPipeline(Prod)
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: push2GCR-Prod
+  image: plugins/gcr
+  settings:
+    build_args:
+    - website=prod
+    json_key:
+      from_secret: GOOGLE_CREDENTIALS
+    repo: gcr.io/rd7-project/video-ui-vue
+    tags:
+    - latest
+    - prod-${DRONE_COMMIT}
+    - ${DRONE_TAG}
+  depends_on:
+  - clone
+
+- name: deploy2GKE-Prod
+  image: nytimes/drone-gke
+  settings:
+    cluster: yellow-video-prod
+    project: rd7-project
+    vars:
+      deployName: video-vui-prod
+      env: prod
+      imageName: video-ui-vue
+      k8sNginxConfigMap: video-vui-nginx-prod
+      k8sNginxSSL: nginx-ssl-prod
+    zone: asia-east1-b
+  environment:
+    TOKEN:
+      from_secret: GOOGLE_CREDENTIALS
+  depends_on:
+  - push2GCR-Prod
+
+trigger:
+  event:
+  - tag
+  ref:
+  - refs/tags/Prod-*
+
+...

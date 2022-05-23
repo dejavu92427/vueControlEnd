@@ -1,0 +1,9 @@
+FROM alpine
+
+RUN apk update && \
+    apk add --no-cache \
+        rsync
+
+COPY ./dist /source
+
+

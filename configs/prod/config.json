@@ -1,0 +1,10 @@
+{
+  "rd7Settings": {
+    "domain":"prod",
+    "isDemo": false,
+    "title": "影片-PROD",
+    "loginImage": "",
+    "vendorUBAuthCheck": true,
+    "domainUBAuth": "sexprod"
+  }
+}
